@@ -5,54 +5,50 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>مولّد إعلان مسابقة رمضانية (A4)</title>
 
-  <!-- Cairo Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
-  <!-- jsPDF for PDF export -->
   <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 
   <style>
     :root{
-      --bg:#0b0d10;
-      --card:#121722;
-      --muted:#aab4c5;
-      --text:#eef2ff;
-      --line:#243045;
-      --accent:#f6c454;
+      --bg:#f5f0e8;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --text:#1f2937;
+      --line:#e5e7eb;
+      --accent:#b8860b;
+      --accent-light:#f6c454;
     }
     *{box-sizing:border-box}
     body{
       margin:0;
       font-family:"Cairo", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:linear-gradient(180deg,#07090c, #0b0d10 50%, #07090c);
+      background:var(--bg);
       color:var(--text);
     }
     .wrap{
       max-width:1200px;
       margin:0 auto;
       padding:22px;
-      display:grid;
-      grid-template-columns: 420px 1fr;
+      display:flex;
+      flex-direction:column;
       gap:18px;
     }
-    @media (max-width: 980px){
-      .wrap{grid-template-columns:1fr; }
-    }
     .card{
-      background:rgba(18,23,34,.85);
-      border:1px solid rgba(36,48,69,.7);
+      background:var(--card);
+      border:1px solid var(--line);
       border-radius:18px;
-      padding:16px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 8px 30px rgba(0,0,0,.35);
+      padding:20px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.08);
     }
     h1{
       margin:0 0 8px 0;
       font-size:18px;
       font-weight:800;
       letter-spacing:.2px;
+      color:var(--text);
     }
     .sub{
       margin:0 0 14px 0;
@@ -62,23 +58,29 @@
     }
     label{
       display:block;
-      font-size:12px;
+      font-size:13px;
       color:var(--muted);
       margin:10px 0 6px;
+      font-weight:600;
     }
     input, select, textarea{
       width:100%;
-      background:#0f1420;
+      background:#fafafa;
       border:1px solid var(--line);
       color:var(--text);
-      padding:10px 10px;
-      border-radius:12px;
+      padding:10px 12px;
+      border-radius:10px;
       outline:none;
       font-family:"Cairo", sans-serif;
       font-size:14px;
+      transition: border-color .2s;
+    }
+    input:focus, select:focus, textarea:focus{
+      border-color: var(--accent-light);
+      box-shadow: 0 0 0 3px rgba(246,196,84,.2);
     }
     textarea{min-height:78px; resize:vertical;}
-    .row{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+    .row{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
     .hint{
       color:var(--muted);
       font-size:12px;
@@ -92,34 +94,43 @@
       flex-wrap:wrap;
     }
     button{
-      border:1px solid rgba(36,48,69,.9);
-      background:#0f1420;
+      border:1px solid var(--line);
+      background:var(--card);
       color:var(--text);
-      padding:10px 12px;
-      border-radius:12px;
+      padding:10px 16px;
+      border-radius:10px;
       cursor:pointer;
       font-family:"Cairo", sans-serif;
       font-weight:700;
-      transition:.15s;
+      font-size:13px;
+      transition:.2s;
     }
-    button:hover{ transform: translateY(-1px); border-color: rgba(246,196,84,.9);}
+    button:hover{
+      transform: translateY(-1px);
+      border-color: var(--accent-light);
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    }
     button.primary{
-      background: linear-gradient(135deg, rgba(246,196,84,.18), rgba(246,196,84,.06));
-      border-color: rgba(246,196,84,.55);
+      background: linear-gradient(135deg, #b8860b, #d4a017);
+      border-color: #b8860b;
+      color:#fff;
+    }
+    button.primary:hover{
+      background: linear-gradient(135deg, #a0750a, #c49515);
     }
     .pill{
       display:inline-flex;
       align-items:center;
       gap:8px;
-      padding:6px 10px;
-      border:1px solid rgba(36,48,69,.8);
+      padding:6px 12px;
+      border:1px solid var(--line);
       border-radius:999px;
       color:var(--muted);
       font-size:12px;
       margin-bottom:10px;
+      background:#fafafa;
     }
 
-    /* Preview */
     .previewHead{
       display:flex;
       justify-content:space-between;
@@ -136,21 +147,21 @@
       justify-content:center;
       align-items:flex-start;
       overflow:auto;
-      border-radius:18px;
-      border:1px solid rgba(36,48,69,.8);
-      background:#0b0f16;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:#f9f6f1;
       padding:10px;
     }
     canvas{
       max-width:100%;
       height:auto;
-      border-radius:10px;
+      border-radius:8px;
     }
 
     .small{
       font-size:12px; color:var(--muted); margin-top:10px; line-height:1.7;
     }
-    .hr{height:1px; background:rgba(36,48,69,.8); margin:14px 0;}
+    .hr{height:1px; background:var(--line); margin:16px 0;}
     .condList{
       display:flex;
       flex-direction:column;
@@ -164,23 +175,93 @@
       align-items:center;
     }
     .danger{
-      border-color: rgba(255, 87, 87, .6) !important;
-      color: rgba(255, 190, 190, 1);
+      border-color: rgba(220, 38, 38, .5) !important;
+      color: #dc2626;
+      background: #fef2f2;
+    }
+    .danger:hover{
+      background: #fee2e2;
+      border-color: #dc2626 !important;
+    }
+    .track4Row{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .track4Row select{ flex:1; }
+    .track4Row button{ flex-shrink:0; padding:10px; }
+    .addTrack4Btn{
+      margin-top:8px;
+      border-color: var(--accent-light);
+      color: var(--accent);
+      background: #fffbeb;
+    }
+    .addTrack4Btn:hover{
+      background: #fef3c7;
+    }
+    .titleCenter{
+      text-align:center;
+      margin-bottom:6px;
+    }
+    .pageTitle{
+      font-size:24px;
+      text-align:center;
+      color: var(--accent);
+      font-weight:900;
+    }
+    .sectionTitle{
+      font-size:16px;
+      font-weight:800;
+      color:var(--text);
+      margin-bottom:4px;
+    }
+    @media (max-width: 600px){
+      .row{ grid-template-columns:1fr; }
     }
   </style>
 </head>
 <body>
 
   <div class="wrap">
-    <!-- Controls -->
+
+    <h1 class="pageTitle">مولّد إعلان مسابقة رمضانية (A4)</h1>
+    <p class="sub" style="text-align:center; margin-top:-10px;">
+      تكتب البيانات وتطلع مباشرة على الصورة — التصدير: PNG + PDF للطباعة
+    </p>
+
+    <!-- ===== المعاينة (فوق) ===== -->
     <div class="card">
-      <h1>مولّد إعلان مسابقة رمضانية (A4)</h1>
+      <div class="previewHead">
+        <div>
+          <h1 class="sectionTitle" style="margin:0;">المعاينة</h1>
+          <div class="meta">A4 - Cairo - RTL</div>
+        </div>
+        <div class="meta" id="status">جاهز</div>
+      </div>
+      <div class="canvasWrap">
+        <canvas id="canvas" width="2480" height="3508"></canvas>
+      </div>
+      <div class="btns">
+        <button class="primary" id="renderBtn" type="button">تحديث المعاينة</button>
+        <button id="downloadPng" type="button">تحميل PNG</button>
+        <button id="downloadPdf" type="button">تحميل PDF (A4)</button>
+      </div>
+    </div>
+
+    <!-- ===== بيانات الإعلان (تحت) ===== -->
+    <div class="card">
+      <h1 class="sectionTitle">بيانات الإعلان</h1>
       <p class="sub">
-        تكتب البيانات وتطلع مباشرة على الصورة. لو تركت خانة فاضية بنعبيها تلقائيًا بنص افتراضي.
-        التصدير: PNG + PDF للطباعة.
+        لو تركت خانة فاضية بنعبيها تلقائيًا بنص افتراضي.
       </p>
 
-      <div class="pill">🖼️ القالب الحالي: صورة A4 المفرّغة</div>
+      <label>اسم المسابقة (حد 60 حرف)</label>
+      <input id="contestName" maxlength="60" placeholder="مثال: مسابقة السويلم لحفظ القرآن الكريم — اتركها فاضية للعنوان الافتراضي" />
+      <div class="hint">اكتب اسم المسابقة كامل هنا — مثلاً: مسابقة آل فلان لحفظ القرآن الكريم</div>
+
+      <div class="hr"></div>
+
+      <div class="pill">القالب الحالي: صورة A4 المفرّغة</div>
 
       <label>رابط صورة القالب (A4)</label>
       <input id="bgUrl" value="https://i.imgur.com/vEturSp.jpeg" />
@@ -188,46 +269,47 @@
       <label style="margin-top:10px;">أو ارفع صورة القالب من جهازك (أفضل حل للتحميل والطباعة)</label>
       <input id="bgFile" type="file" accept="image/*" />
       <div class="hint">
-        ✅ لو الرابط ما يشتغل أو التحميل ما يعمل بسبب حماية المتصفح، ارفع القالب من جهازك هنا.
+        لو الرابط ما يشتغل أو التحميل ما يعمل بسبب حماية المتصفح، ارفع القالب من جهازك هنا.
         (نضمن بعدها أن PNG/PDF يشتغل 100%).
       </div>
 
-      <div class="row">
-        <div>
-          <label>اسم العائلة (إلزامي)</label>
-          <input id="familyName" placeholder="مثال: السويلم" />
-        </div>
-        <div>
-          <label>اسم المسابقة (حد 60)</label>
-          <input id="contestName" maxlength="60" placeholder="اتركها فاضية للعنوان الافتراضي" />
-        </div>
-      </div>
+      <div class="hr"></div>
 
       <label>وصف/مقدمة (اختياري)</label>
       <textarea id="intro" placeholder="اتركها فاضية للنص الافتراضي"></textarea>
 
       <div class="hr"></div>
 
-      <label>مسارات المسابقة (اختر 4 مسارات)</label>
+      <label>مسارات المسابقة (اختر 3 أو 4 مسارات)</label>
       <div class="row">
         <div>
+          <label>المسار الأول</label>
           <select class="track" data-i="1"></select>
           <input class="trackOther" data-i="1" placeholder="لو اخترت (أخرى) اكتب هنا" style="display:none;margin-top:8px;">
         </div>
         <div>
+          <label>المسار الثاني</label>
           <select class="track" data-i="2"></select>
           <input class="trackOther" data-i="2" placeholder="لو اخترت (أخرى) اكتب هنا" style="display:none;margin-top:8px;">
         </div>
       </div>
       <div class="row">
         <div>
+          <label>المسار الثالث</label>
           <select class="track" data-i="3"></select>
           <input class="trackOther" data-i="3" placeholder="لو اخترت (أخرى) اكتب هنا" style="display:none;margin-top:8px;">
         </div>
-        <div>
-          <select class="track" data-i="4"></select>
+        <div id="track4Container">
+          <label>المسار الرابع (اختياري)</label>
+          <div class="track4Row">
+            <select class="track" data-i="4"></select>
+            <button type="button" class="danger" id="removeTrack4" title="حذف المسار الرابع">حذف</button>
+          </div>
           <input class="trackOther" data-i="4" placeholder="لو اخترت (أخرى) اكتب هنا" style="display:none;margin-top:8px;">
         </div>
+      </div>
+      <div id="addTrack4Wrap" style="display:none;">
+        <button type="button" class="addTrack4Btn" id="addTrack4">+ إضافة مسار رابع</button>
       </div>
 
       <div class="hr"></div>
@@ -258,7 +340,7 @@
 
       <div id="tasmeeOther" style="display:none;">
         <label>اكتب آلية التسميع (سطرين كحد أقصى)</label>
-        <textarea id="tasmeeOtherText" placeholder="مثال: التسميع عبر واتساب (مقطع صوتي)\nويتم التسليم يوميًا بعد التراويح"></textarea>
+        <textarea id="tasmeeOtherText" placeholder="مثال: التسميع عبر واتساب (مقطع صوتي)&#10;ويتم التسليم يوميًا بعد التراويح"></textarea>
       </div>
 
       <div class="hr"></div>
@@ -285,36 +367,16 @@
       <label>الختام (اختياري)</label>
       <input id="closing" placeholder="اتركها فاضية للختام الافتراضي" />
 
-      <div class="btns">
-        <button class="primary" id="renderBtn" type="button">تحديث المعاينة</button>
-        <button id="downloadPng" type="button">تحميل PNG</button>
-        <button id="downloadPdf" type="button">تحميل PDF (A4)</button>
-      </div>
-
       <p class="small">
-        ✅ حتى لو رابط الصورة ما سمح (CORS)، النظام يعطيك قالب بديل بسيط للطباعة + التحميل يشتغل.
+        حتى لو رابط الصورة ما سمح (CORS)، النظام يعطيك قالب بديل بسيط للطباعة + التحميل يشتغل.
         لكن للحصول على نفس القالب 100%: ارفع الصورة من جهازك.
       </p>
-    </div>
-
-    <!-- Preview -->
-    <div class="card">
-      <div class="previewHead">
-        <div>
-          <h1 style="margin:0;font-size:16px;">المعاينة</h1>
-          <div class="meta">A4 • Cairo • RTL</div>
-        </div>
-        <div class="meta" id="status">جاهز</div>
-      </div>
-      <div class="canvasWrap">
-        <canvas id="canvas" width="2480" height="3508"></canvas>
-      </div>
     </div>
   </div>
 
 <script>
   // ====== Config ======
-  const A4_W = 2480; // ~A4 at 300dpi
+  const A4_W = 2480;
   const A4_H = 3508;
 
   const TRACK_OPTIONS = [
@@ -328,10 +390,10 @@
     "أخرى (اكتبها بنفسك)"
   ];
 
-  const DEFAULT_TRACKS = ["سورة الكهف", "جزء تبارك", "جزء عم", "سورة الناس"]; // كما طلبت
+  const DEFAULT_TRACKS = ["سورة الكهف", "جزء تبارك", "جزء عم", "سورة الناس"];
 
   const DEFAULT_INTRO = () =>
-`✨ فرصة رائعة لحفظ كتاب الله والفوز بجوائز قيمة! ✨\nيسرّكم المشاركة في هذه المسابقة التي تهدف لتشجيع الجميع على حفظ كلام الله وتدبره.\nهذه المسابقة ليست فقط لاختبار القدرات، بل هي أيضًا طريق لنيل الأجر والبركة.`;
+`فرصة رائعة لحفظ كتاب الله والفوز بجوائز قيمة!\nيسرّكم المشاركة في هذه المسابقة التي تهدف لتشجيع الجميع على حفظ كلام الله وتدبره.\nهذه المسابقة ليست فقط لاختبار القدرات، بل هي أيضًا طريق لنيل الأجر والبركة.`;
 
   const DEFAULT_CONDS = [
     "الالتزام بالتلاوة الصحيحة.",
@@ -347,10 +409,8 @@
   const bgUrl = document.getElementById("bgUrl");
   const bgFile = document.getElementById("bgFile");
 
-  // If user uploads a template image, we use it as a dataURL to avoid CORS issues.
   let bgDataUrl = "";
 
-  const familyName = document.getElementById("familyName");
   const contestName = document.getElementById("contestName");
   const intro = document.getElementById("intro");
 
@@ -374,13 +434,19 @@
   const downloadPng = document.getElementById("downloadPng");
   const downloadPdf = document.getElementById("downloadPdf");
 
+  const track4Container = document.getElementById("track4Container");
+  const addTrack4Wrap = document.getElementById("addTrack4Wrap");
+  const addTrack4Btn = document.getElementById("addTrack4");
+  const removeTrack4Btn = document.getElementById("removeTrack4");
+
+  let track4Visible = true;
+
   // ====== Helpers ======
   function setStatus(msg){ statusEl.textContent = msg; }
 
   function loadImage(url){
     return new Promise((resolve,reject)=>{
       const img = new Image();
-      // Only for remote URLs; dataURL/local upload does not need this.
       if(/^https?:\/\//i.test(url)) img.crossOrigin = "anonymous";
       img.onload = ()=> resolve(img);
       img.onerror = ()=> reject(new Error("فشل تحميل الصورة: " + url));
@@ -441,35 +507,45 @@
   }
 
   function drawFallbackBackground(){
-    // A printable, simple A4 template so downloads ALWAYS work.
     const g = ctx.createLinearGradient(0,0,0,A4_H);
     g.addColorStop(0, "#f7f1e6");
     g.addColorStop(1, "#efe2cd");
     ctx.fillStyle = g;
     ctx.fillRect(0,0,A4_W,A4_H);
 
-    // Border
     ctx.strokeStyle = "#3b2a1a";
     ctx.lineWidth = 18;
     ctx.strokeRect(120,120,A4_W-240,A4_H-240);
     ctx.lineWidth = 6;
     ctx.strokeRect(160,160,A4_W-320,A4_H-320);
 
-    // Top ornaments
     ctx.fillStyle = "rgba(59,42,26,.12)";
     ctx.beginPath();
     ctx.roundRect(320, 260, A4_W-640, 2400, 120);
     ctx.fill();
 
-    // Simple lantern circle
     ctx.fillStyle = "rgba(246,196,84,.35)";
     ctx.beginPath();
     ctx.arc(A4_W-420, 520, 120, 0, Math.PI*2);
     ctx.fill();
 
-    // bottom desk bar
     ctx.fillStyle = "rgba(59,42,26,.18)";
     ctx.fillRect(0, A4_H-520, A4_W, 520);
+  }
+
+  // ====== Track 4 toggle ======
+  function hideTrack4(){
+    track4Visible = false;
+    track4Container.style.display = "none";
+    addTrack4Wrap.style.display = "block";
+    render();
+  }
+
+  function showTrack4Fn(){
+    track4Visible = true;
+    track4Container.style.display = "block";
+    addTrack4Wrap.style.display = "none";
+    render();
   }
 
   // ====== Tracks UI ======
@@ -500,7 +576,8 @@
 
   function getTracks(){
     const out = [];
-    for(let i=1;i<=4;i++){
+    const maxTrack = track4Visible ? 4 : 3;
+    for(let i=1;i<=maxTrack;i++){
       const sel = document.querySelector(`select.track[data-i="${i}"]`);
       const other = document.querySelector(`input.trackOther[data-i="${i}"]`);
       let val = sel?.value || "";
@@ -512,11 +589,8 @@
 
   // ====== Defaults generator ======
   function buildData(){
-    const fam = familyName.value.trim();
-    const famFinal = fam || "اسم العائلة";
-
     const contest = clampText(contestName.value, 60);
-    const contestFinal = contest || `مسابقة ${famFinal} لحفظ القرآن الكريم`;
+    const contestFinal = contest || "مسابقة حفظ القرآن الكريم";
 
     const introFinal = isEmpty(intro.value) ? DEFAULT_INTRO() : intro.value.trim();
 
@@ -544,7 +618,6 @@
 
     return {
       bg: (bgDataUrl || bgUrl.value.trim()),
-      fam: famFinal,
       contest: contestFinal,
       intro: introFinal,
       tracks,
@@ -556,6 +629,8 @@
     };
   }
 
+  const TRACK_LABELS = ["المسار الأول", "المسار الثاني", "المسار الثالث", "المسار الرابع"];
+
   // ====== Draw layout on canvas ======
   async function render(){
     setStatus("يتم التحديث...");
@@ -563,7 +638,6 @@
 
     ctx.clearRect(0,0,A4_W,A4_H);
 
-    // 1) Try template image (uploaded dataURL is best)
     let img = null;
     let usedFallback = false;
     const bgToUse = data.bg;
@@ -577,7 +651,6 @@
       }
     }
 
-    // 2) If template fails (CORS / network), draw fallback background so export ALWAYS works
     if(img){
       ctx.drawImage(img, 0, 0, A4_W, A4_H);
     }else{
@@ -592,27 +665,19 @@
     const centerX = A4_W/2;
     let y = 520;
 
-    // Family
     ctx.fillStyle = titleColor;
-    ctx.font = "800 78px Cairo";
-    ctx.textAlign = "center";
-    ctx.fillText(data.fam, centerX, y);
-
-    // Contest
-    y += 130;
     ctx.font = "900 102px Cairo";
+    ctx.textAlign = "center";
     const contestLines = wrapText(ctx, data.contest, 1750);
     contestLines.slice(0,2).forEach((ln, i)=> ctx.fillText(ln, centerX, y + i*110));
     y += Math.min(2, contestLines.length)*110;
 
-    // Intro
     y += 70;
     ctx.font = "700 46px Cairo";
     ctx.fillStyle = bodyColor;
     const introHeight = drawWrapped(ctx, data.intro, centerX, y, 1750, 70, "center");
     y += introHeight + 70;
 
-    // Tracks title
     ctx.fillStyle = accentColor;
     ctx.font = "900 70px Cairo";
     ctx.fillText("مسارات المسابقة", centerX, y);
@@ -624,19 +689,13 @@
     y += 85;
 
     ctx.font = "800 50px Cairo";
-    const trackLines = [
-      `المسار الأول: ${data.tracks[0]}.`,
-      `المسار الثاني: ${data.tracks[1]}.`,
-      `المسار الثالث: ${data.tracks[2]}.`,
-      `المسار الرابع: ${data.tracks[3]}.`,
-    ];
-
-    trackLines.forEach((t)=>{
+    const trackLabels = TRACK_LABELS.slice(0, data.tracks.length);
+    trackLabels.forEach((label, i)=>{
+      const t = `${label}: ${data.tracks[i]}.`;
       const h = drawWrapped(ctx, t, centerX, y, 1750, 76, "center");
       y += h + 12;
     });
 
-    // Tasmee
     y += 35;
     ctx.fillStyle = accentColor;
     ctx.font = "900 66px Cairo";
@@ -650,7 +709,6 @@
       y += h + 10;
     });
 
-    // Conditions
     y += 35;
     ctx.fillStyle = accentColor;
     ctx.font = "900 66px Cairo";
@@ -660,18 +718,16 @@
     ctx.fillStyle = bodyColor;
     ctx.font = "800 48px Cairo";
     data.conds.slice(0,6).forEach((c)=>{
-      const h = drawWrapped(ctx, "✅ " + c, centerX, y, 1750, 74, "center");
+      const h = drawWrapped(ctx, c, centerX, y, 1750, 74, "center");
       y += h + 8;
     });
 
-    // Deadline
     y += 35;
     ctx.fillStyle = bodyColor;
     ctx.font = "900 58px Cairo";
-    ctx.fillText(`⏳ آخر موعد للتسليم: ${data.deadline}`, centerX, y);
+    ctx.fillText(`آخر موعد للتسليم: ${data.deadline}`, centerX, y);
     y += 95;
 
-    // Note
     if(data.note){
       ctx.fillStyle = bodyColor;
       ctx.font = "800 46px Cairo";
@@ -679,10 +735,9 @@
       y += h + 55;
     }
 
-    // Closing
     ctx.fillStyle = accentColor;
     ctx.font = "900 58px Cairo";
-    drawWrapped(ctx, `⭐ ${data.closing} ⭐`, centerX, y, 1750, 76, "center");
+    drawWrapped(ctx, data.closing, centerX, y, 1750, 76, "center");
 
     setStatus(usedFallback ? "تم (قالب بديل للطباعة)" : "تم");
   }
@@ -718,30 +773,8 @@
     }
   }
 
-  // ====== Tests (lightweight) ======
-  function runTests(){
-    try{
-      console.assert(DEFAULT_TRACKS.length === 4, "DEFAULT_TRACKS should have 4");
-      console.assert(TRACK_OPTIONS.includes("جزء عم"), "TRACK_OPTIONS should include جزء عم");
-      console.assert(TRACK_OPTIONS.includes("جزء تبارك"), "TRACK_OPTIONS should include جزء تبارك");
-
-      // Contest length clamp
-      const s = "ا".repeat(80);
-      console.assert(clampText(s,60).length <= 60, "clampText should limit to 60");
-
-      // WrapText should return at least 1 line
-      ctx.font = "700 46px Cairo";
-      console.assert(wrapText(ctx, "نص تجريبي", 200).length >= 1, "wrapText should return lines");
-
-      console.log("✅ Tests passed");
-    }catch(e){
-      console.warn("Tests warning", e);
-    }
-  }
-
   // ====== Events ======
   function wire(){
-    // Default conditions
     condsEl.innerHTML = "";
     DEFAULT_CONDS.forEach(c=> condsEl.appendChild(createCondInput(c)));
 
@@ -750,7 +783,6 @@
       render();
     });
 
-    // Upload background to avoid CORS
     bgFile.addEventListener("change", ()=>{
       const file = bgFile.files && bgFile.files[0];
       if(!file) return;
@@ -759,7 +791,6 @@
       reader.readAsDataURL(file);
     });
 
-    // Auto render
     document.querySelectorAll("input,textarea,select").forEach(el=> el.addEventListener("input", ()=> render()));
 
     tasmeeType.addEventListener("change", ()=>{
@@ -773,6 +804,9 @@
       render();
     });
 
+    removeTrack4Btn.addEventListener("click", hideTrack4);
+    addTrack4Btn.addEventListener("click", showTrack4Fn);
+
     renderBtn.addEventListener("click", render);
     downloadPng.addEventListener("click", downloadCanvasPNG);
     downloadPdf.addEventListener("click", downloadCanvasPDF);
@@ -781,7 +815,6 @@
   // Boot
   initTracks();
   wire();
-  runTests();
   render();
 </script>
 
