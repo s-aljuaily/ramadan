@@ -3,32 +3,88 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f172a" />
   <title>رحلة شهر العسل | سليمان & إسراء</title>
+  <meta name="description" content="دليل شهر العسل في جنوب أفريقيا لسليمان وإسراء مع خطة الطيران والسكن والبرنامج اليومي وروابط الخرائط والحجز." />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            luxe: {
+              bg: '#f8f5ef',
+              surface: '#ffffff',
+              dark: '#0f172a',
+              gold: '#d4af37',
+              sand: '#ebe4d8',
+              ocean: '#375a72',
+              sage: '#7b8d7a'
+            }
+          },
+          boxShadow: {
+            soft: '0 12px 40px rgba(15, 23, 42, 0.08)',
+            card: '0 10px 30px rgba(15, 23, 42, 0.07)'
+          },
+          fontFamily: {
+            ar: ['Tajawal', 'sans-serif'],
+            en: ['Playfair Display', 'serif']
+          }
+        }
+      }
+    }
+  </script>
   <style>
-    body { font-family: 'Tajawal', sans-serif; background: #f8f5ef; scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Tajawal', sans-serif; background: #f8f5ef; }
     .font-en { font-family: 'Playfair Display', serif; }
     summary { list-style: none; }
     summary::-webkit-details-marker { display: none; }
+    .glass { backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
   </style>
 </head>
-<body class="text-slate-900">
+<body class="bg-luxe-bg text-slate-900">
   <script>
     const trip = {
       titleAr: 'رحلة شهر العسل',
       titleEn: 'Our First Journey Together',
       names: 'سليمان & إسراء',
-      destination: 'South Africa Honeymoon 2026'
+      destination: 'South Africa Honeymoon 2026',
+      subtitle: 'دليل فاخر، واضح، وسريع الفتح أثناء السفر'
     };
 
     const flights = [
-      { from: 'Riyadh', to: 'Doha', depart: '20 Apr 2026 - 20:25', arrive: '20 Apr 2026 - 21:50' },
-      { from: 'Doha', to: 'Cape Town', depart: '21 Apr 2026 - 02:40', arrive: '21 Apr 2026 - 11:30' },
-      { from: 'Cape Town', to: 'Doha', depart: '2 May 2026 - 13:00', arrive: '2 May 2026 - 23:35' },
-      { from: 'Doha', to: 'Riyadh', depart: '3 May 2026 - 02:10', arrive: '3 May 2026 - 03:40' }
+      {
+        airline: 'Qatar Airways',
+        from: 'Riyadh',
+        to: 'Doha',
+        depart: '20 Apr 2026 - 20:25',
+        arrive: '20 Apr 2026 - 21:50'
+      },
+      {
+        airline: 'Qatar Airways',
+        from: 'Doha',
+        to: 'Cape Town',
+        depart: '21 Apr 2026 - 02:40',
+        arrive: '21 Apr 2026 - 11:30'
+      },
+      {
+        airline: 'Qatar Airways',
+        from: 'Cape Town',
+        to: 'Doha',
+        depart: '2 May 2026 - 13:00',
+        arrive: '2 May 2026 - 23:35'
+      },
+      {
+        airline: 'Qatar Airways',
+        from: 'Doha',
+        to: 'Riyadh',
+        depart: '3 May 2026 - 02:10',
+        arrive: '3 May 2026 - 03:40'
+      }
     ];
 
     const stays = [
@@ -37,6 +93,7 @@
         area: 'Camps Bay, Cape Town',
         dates: '21 Apr → 25 Apr',
         nights: 4,
+        note: 'افتتاحية بحرية راقية ومناسبة لبداية شهر العسل.',
         map: 'https://maps.google.com/?q=Living+Hotel+Lions+Eye+Camps+Bay',
         site: 'https://lionseye.co.za/',
         booking: 'https://lionseye.co.za/book-a-room/'
@@ -46,6 +103,7 @@
         area: 'Garden Route',
         dates: '25 Apr → 26 Apr',
         nights: 1,
+        note: 'ليلة سفاري الغروب والشروق وتحتاج تنظيمًا دقيقًا للوصول.',
         map: 'https://maps.google.com/?q=Botlierskop+Private+Game+Reserve',
         site: 'https://www.botlierskop.co.za/',
         booking: 'https://www.botlierskop.co.za/contact/'
@@ -55,6 +113,7 @@
         area: 'Wilderness',
         dates: '26 Apr → 30 Apr',
         nights: 4,
+        note: 'إقامة هادئة على البحر بطابع مريح ورومانسي.',
         map: 'https://maps.google.com/?q=Views+Boutique+Hotel+Wilderness',
         site: 'https://www.viewshotel.co.za/',
         booking: 'https://www.viewshotel.co.za/contact-us/'
@@ -64,6 +123,7 @@
         area: 'Cape Town CBD',
         dates: '30 Apr → 2 May',
         nights: 2,
+        note: 'محطة عملية للختام والتسوق قبل العودة.',
         map: 'https://maps.google.com/?q=The+Rockefeller+Hotel+Cape+Town',
         site: 'https://newmarkhotels.com/accommodation/the-rockefeller-hotel',
         booking: 'https://newmarkhotels.com/accommodation/the-rockefeller-hotel/rooms'
@@ -75,129 +135,223 @@
         date: '17 Apr 2026',
         title: 'ليلة الزواج',
         city: 'الرياض',
-        summary: 'فندق، راحة، عشاء خفيف، أمسية هادئة.',
-        items: ['فندق', 'استرخاء', 'عشاء داخل الغرفة', 'مساء خاص']
+        energy: 'هادئ',
+        summary: 'فندق، راحة، عشاء خفيف، وأمسية خاصة بدون ضغط.',
+        items: ['فندق', 'استرخاء', 'عشاء داخل الغرفة', 'مساء خاص'],
+        links: []
       },
       {
         date: '18 Apr 2026',
         title: 'بداية هادئة',
         city: 'الرياض',
-        summary: 'فطور، سبا، تمشية خفيفة، كوفي، زيارات أهل.',
-        items: ['فطور', 'سبا / استرخاء', 'طلعة خفيفة', 'كوفي', 'زيارة أهل']
+        energy: 'هادئ',
+        summary: 'فطور، سبا، تمشية خفيفة، كوفي، وزيارات أهل.',
+        items: ['فطور', 'سبا / استرخاء', 'طلعة خفيفة', 'كوفي', 'زيارة أهل'],
+        links: []
       },
       {
         date: '19 Apr 2026',
         title: 'يوم التجهيز',
         city: 'الرياض',
+        energy: 'هادئ',
         summary: 'ترتيب الشنط وزيارات أهل ونوم مبكر.',
-        items: ['البيت', 'زيارات أهل', 'تجهيز السفر', 'نوم مبكر']
+        items: ['البيت', 'زيارات أهل', 'تجهيز السفر', 'نوم مبكر'],
+        links: []
       },
       {
         date: '20 Apr 2026',
         title: 'يوم السفر',
         city: 'الرياض → الدوحة → كيب تاون',
-        summary: 'بداية الرحلة عبر الخطوط القطرية.',
-        items: ['المطار', 'رحلة الرياض - الدوحة', 'ترانزيت', 'رحلة الدوحة - كيب تاون']
+        energy: 'منخفض',
+        summary: 'بداية الرحلة عبر الخطوط القطرية مع ترانزيت مريح.',
+        items: ['المطار', 'رحلة الرياض - الدوحة', 'ترانزيت', 'رحلة الدوحة - كيب تاون'],
+        links: []
       },
       {
         date: '21 Apr 2026',
         title: 'الوصول والانبهار',
         city: 'Cape Town',
-        summary: 'استلام السيارة، الفندق، راحة، تمشية خفيفة في Camps Bay.',
-        items: ['استلام السيارة', 'Check-in', 'تمشية Camps Bay', 'كوفي', 'عشاء هادئ']
+        energy: 'منخفض',
+        summary: 'استلام السيارة، الدخول للفندق، راحة، وتمشية خفيفة في Camps Bay.',
+        items: ['استلام السيارة', 'Check-in', 'تمشية Camps Bay', 'كوفي', 'عشاء هادئ'],
+        links: [
+          { label: 'الفندق', type: 'الموقع', url: 'https://lionseye.co.za/' },
+          { label: 'الفندق', type: 'الخرائط', url: 'https://maps.google.com/?q=Living+Hotel+Lions+Eye+Camps+Bay' }
+        ]
       },
       {
         date: '22 Apr 2026',
         title: 'المدينة والمشهد',
         city: 'Cape Town',
-        summary: 'جبل الطاولة، Kirstenbosch، V&A Waterfront.',
-        items: ['Table Mountain Cableway', 'Kirstenbosch', 'غداء', 'V&A Waterfront', 'عشاء']
+        energy: 'متوسط',
+        summary: 'يوم بانورامي يجمع جبل الطاولة وKirstenbosch والـ Waterfront.',
+        items: ['Table Mountain Cableway', 'Kirstenbosch', 'غداء', 'V&A Waterfront', 'عشاء'],
+        links: [
+          { label: 'Table Mountain', type: 'الحجز', url: 'https://www.webtickets.co.za/v2/event.aspx?itemid=681080' },
+          { label: 'Table Mountain', type: 'الخرائط', url: 'https://maps.google.com/?q=Table+Mountain+Aerial+Cableway' },
+          { label: 'Kirstenbosch', type: 'الموقع', url: 'https://www.sanbi.org/gardens/kirstenbosch/' },
+          { label: 'Waterfront', type: 'الموقع', url: 'https://www.waterfront.co.za/' }
+        ]
       },
       {
         date: '23 Apr 2026',
         title: 'التجارب الفاخرة',
         city: 'Cape Town',
-        summary: 'هليكوبتر، Waterfront، Sea Point Promenade.',
-        items: ['فطور', 'Helicopter Experience', 'Waterfront', 'Sea Point', 'عشاء']
+        energy: 'متوسط',
+        summary: 'هليكوبتر، Waterfront، وSea Point Promenade بنهاية ناعمة.',
+        items: ['فطور', 'Helicopter Experience', 'Waterfront', 'Sea Point', 'عشاء'],
+        links: [
+          { label: 'Helicopter', type: 'الموقع', url: 'https://www.capetownhelicopters.co.za/' },
+          { label: 'Helicopter', type: 'الخرائط', url: 'https://maps.google.com/?q=Cape+Town+Helicopters' },
+          { label: 'Sea Point', type: 'الخرائط', url: 'https://maps.google.com/?q=Sea+Point+Promenade' }
+        ]
       },
       {
         date: '24 Apr 2026',
         title: 'المغامرة الساحلية الكبرى',
         city: 'Cape Town',
-        summary: 'بطاريق، Cape Point، Chapman’s Peak، Atlantis Dunes، Toboggan.',
-        items: ['Boulders Penguins', 'Cape Point', 'Chapman’s Peak', 'Atlantis Dunes', 'Toboggan']
+        energy: 'مرتفع',
+        summary: 'يوم ممتلئ: بطاريق، Cape Point، Chapman’s Peak، Atlantis Dunes، Toboggan.',
+        items: ['Boulders Penguins', 'Cape Point', 'Chapman’s Peak', 'Atlantis Dunes', 'Toboggan'],
+        links: [
+          { label: 'Boulders', type: 'الحجز', url: 'https://www.sanparks.org/tickets/tickets.php' },
+          { label: 'Cape Point', type: 'الموقع', url: 'https://capepoint.co.za/' },
+          { label: 'Atlantis Dunes', type: 'الموقع', url: 'https://atlantisdunes.com/' },
+          { label: 'Toboggan', type: 'الموقع', url: 'https://www.coolrunnings.capetown/' }
+        ]
       },
       {
         date: '25 Apr 2026',
         title: 'إلى السفاري',
         city: 'Cape Town → Botlierskop',
-        summary: 'خروج من كيب تاون ثم سفاري غروب.',
-        items: ['Breakfast', 'Check-out', 'Drive to Botlierskop', 'Sunset Safari', 'Dinner']
+        energy: 'متوسط',
+        summary: 'خروج من كيب تاون ثم سفاري غروب ومبيت في المحمية.',
+        items: ['Breakfast', 'Check-out', 'Drive to Botlierskop', 'Sunset Safari', 'Dinner'],
+        links: [
+          { label: 'Botlierskop', type: 'الموقع', url: 'https://www.botlierskop.co.za/' },
+          { label: 'Botlierskop', type: 'الخرائط', url: 'https://maps.google.com/?q=Botlierskop+Private+Game+Reserve' }
+        ]
       },
       {
         date: '26 Apr 2026',
         title: 'شروق وطريق هادئ',
         city: 'Botlierskop → Wilderness',
-        summary: 'سفاري شروق ثم التوجه إلى Wilderness.',
-        items: ['Sunrise Safari', 'Breakfast', 'Drive', 'Dolphin Point', 'Check-in Views Hotel']
+        energy: 'متوسط',
+        summary: 'سفاري شروق ثم طريق جميل إلى Wilderness مع توقفات بصرية.',
+        items: ['Sunrise Safari', 'Breakfast', 'Drive', 'Dolphin Point', 'Check-in Views Hotel'],
+        links: [
+          { label: 'Dolphin Point', type: 'الخرائط', url: 'https://maps.google.com/?q=Dolphin+Point+Wilderness' },
+          { label: 'Views Hotel', type: 'الموقع', url: 'https://www.viewshotel.co.za/' }
+        ]
       },
       {
         date: '27 Apr 2026',
         title: 'سحر البحيرة والساحل',
         city: 'Garden Route',
-        summary: 'Wild Oats و Knysna بخيارين.',
-        items: ['Wild Oats Market', 'Knysna', 'Lagoon Cruise اختياري', 'Knysna Heads', 'Dinner']
+        energy: 'متوسط',
+        summary: 'Wild Oats وKnysna مع خيار قارب أو نسخة أخف حسب الوقت والطاقة.',
+        items: ['Wild Oats Market', 'Knysna', 'Lagoon Cruise اختياري', 'Knysna Heads', 'Dinner'],
+        links: [
+          { label: 'Wild Oats', type: 'الموقع', url: 'https://www.wildoatsmarket.co.za/' },
+          { label: 'Knysna Heads', type: 'الخرائط', url: 'https://maps.google.com/?q=Knysna+Heads' }
+        ]
       },
       {
         date: '28 Apr 2026',
         title: 'يوم المغامرة الكبير',
         city: 'Garden Route',
-        summary: 'Monkeyland و Birds of Eden و Tsitsikamma.',
-        items: ['Monkeyland', 'Birds of Eden', 'Lunch', 'Tsitsikamma', 'Zipline / Bungy اختياري']
+        energy: 'مرتفع',
+        summary: 'Monkeyland وBirds of Eden وTsitsikamma مع خيار Zipline أو Bungy.',
+        items: ['Monkeyland', 'Birds of Eden', 'Lunch', 'Tsitsikamma', 'Zipline / Bungy اختياري'],
+        links: [
+          { label: 'Monkeyland', type: 'الموقع', url: 'https://www.monkeyland.co.za/' },
+          { label: 'Birds of Eden', type: 'الموقع', url: 'https://www.birdsofeden.co.za/' },
+          { label: 'Canopy Tour', type: 'الحجز', url: 'https://www.canopytour.co.za/book-now/' }
+        ]
       },
       {
         date: '29 Apr 2026',
         title: 'راحة وبحر وهدوء',
         city: 'Wilderness',
-        summary: 'شاطئ، كاياك، سبا، غروب، عشاء رومانسي.',
-        items: ['Beach Walk', 'Kayaking', 'Coffee', 'Spa', 'Romantic Dinner']
+        energy: 'هادئ',
+        summary: 'شاطئ، كاياك، سبا، غروب، وعشاء رومانسي.',
+        items: ['Beach Walk', 'Kayaking', 'Coffee', 'Spa', 'Romantic Dinner'],
+        links: [
+          { label: 'Kayaking', type: 'الخرائط', url: 'https://maps.google.com/?q=Wilderness+Kayaking' },
+          { label: 'Views Hotel', type: 'الحجز', url: 'https://www.viewshotel.co.za/contact-us/' }
+        ]
       },
       {
         date: '30 Apr 2026',
         title: 'العودة الرومانسية',
         city: 'Wilderness → Hermanus → Cape Town',
-        summary: 'طريق العودة مع توقف في Hermanus.',
-        items: ['Check-out', 'Hermanus Lunch', 'Boat اختياري', 'Cliff Walk', 'Rockefeller Check-in']
+        energy: 'متوسط',
+        summary: 'طريق العودة مع توقف في Hermanus، والقارب يبقى اختياريًا.',
+        items: ['Check-out', 'Hermanus Lunch', 'Boat اختياري', 'Cliff Walk', 'Rockefeller Check-in'],
+        links: [
+          { label: 'Hermanus Boat', type: 'الموقع', url: 'https://hermanuswhalewatchers.co.za/' },
+          { label: 'Cliff Walk', type: 'الخرائط', url: 'https://maps.google.com/?q=Hermanus+Cliff+Path' },
+          { label: 'Rockefeller', type: 'الموقع', url: 'https://newmarkhotels.com/accommodation/the-rockefeller-hotel' }
+        ]
       },
       {
         date: '1 May 2026',
         title: 'التسوق ويوم المدينة البطيء',
         city: 'Cape Town',
-        summary: 'Canal Walk ثم Sea Point.',
-        items: ['Breakfast', 'Canal Walk', 'Lunch', 'Coffee', 'Sea Point Promenade']
+        energy: 'منخفض',
+        summary: 'Canal Walk ثم Sea Point بيوم خفيف ومريح.',
+        items: ['Breakfast', 'Canal Walk', 'Lunch', 'Coffee', 'Sea Point Promenade'],
+        links: [
+          { label: 'Canal Walk', type: 'الموقع', url: 'https://canalwalk.co.za/' },
+          { label: 'Sea Point', type: 'الخرائط', url: 'https://maps.google.com/?q=Sea+Point+Promenade' }
+        ]
       },
       {
         date: '2 May 2026',
         title: 'الختام الأنيق',
         city: 'Cape Town',
-        summary: 'Greenmarket و Old Biscuit Mill و Waterfront.',
-        items: ['Greenmarket Square', 'Old Biscuit Mill', 'Coffee', 'Lunch', 'V&A Waterfront']
+        energy: 'منخفض',
+        summary: 'Greenmarket وOld Biscuit Mill وWaterfront قبل الختام الأخير.',
+        items: ['Greenmarket Square', 'Old Biscuit Mill', 'Coffee', 'Lunch', 'V&A Waterfront'],
+        links: [
+          { label: 'Greenmarket', type: 'الخرائط', url: 'https://maps.google.com/?q=Greenmarket+Square' },
+          { label: 'Old Biscuit Mill', type: 'الموقع', url: 'https://www.theoldbiscuitmill.co.za/' },
+          { label: 'Waterfront', type: 'الموقع', url: 'https://www.waterfront.co.za/' }
+        ]
       },
       {
         date: '2–3 May 2026',
         title: 'الوداع',
         city: 'Cape Town → Doha → Riyadh',
-        summary: 'تسليم السيارة والعودة للرياض.',
-        items: ['Check-out', 'Car Return', 'Airport', 'Flights Home']
+        energy: 'منخفض',
+        summary: 'تسليم السيارة والتوجه للمطار والعودة للرياض.',
+        items: ['Check-out', 'Car Return', 'Airport', 'Flights Home'],
+        links: []
       }
     ];
 
     function actionButtons(map, site, booking) {
       return `
         <div class="mt-4 flex flex-wrap gap-2">
-          ${map ? `<a href="${map}" target="_blank" class="rounded-xl bg-slate-900 px-4 py-2 text-sm font-bold text-white">الخرائط</a>` : ''}
-          ${site ? `<a href="${site}" target="_blank" class="rounded-xl border border-slate-300 px-4 py-2 text-sm font-bold">الموقع</a>` : ''}
-          ${booking ? `<a href="${booking}" target="_blank" class="rounded-xl border border-amber-300 bg-amber-50 px-4 py-2 text-sm font-bold text-amber-900">الحجز</a>` : ''}
+          ${map ? `<a href="${map}" target="_blank" rel="noopener" class="rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-bold text-white transition hover:opacity-90">الخرائط</a>` : ''}
+          ${site ? `<a href="${site}" target="_blank" rel="noopener" class="rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-sm font-bold transition hover:bg-stone-50">الموقع</a>` : ''}
+          ${booking ? `<a href="${booking}" target="_blank" rel="noopener" class="rounded-xl border border-amber-300 bg-amber-50 px-4 py-2.5 text-sm font-bold text-amber-900 transition hover:bg-amber-100">الحجز</a>` : ''}
+        </div>
+      `;
+    }
+
+    function linkPills(links) {
+      if (!links || !links.length) return '';
+      return `
+        <div class="mt-5 border-t border-stone-100 pt-5">
+          <p class="mb-3 text-sm font-extrabold text-slate-900">روابط اليوم</p>
+          <div class="flex flex-wrap gap-2">
+            ${links.map(link => `
+              <a href="${link.url}" target="_blank" rel="noopener" class="rounded-full border border-stone-200 bg-white px-4 py-2 text-xs font-bold text-slate-700 transition hover:border-amber-300 hover:text-amber-900">
+                ${link.label} • ${link.type}
+              </a>
+            `).join('')}
+          </div>
         </div>
       `;
     }
@@ -206,50 +360,62 @@
       document.getElementById('hero-title-ar').textContent = trip.titleAr;
       document.getElementById('hero-title-en').textContent = trip.titleEn;
       document.getElementById('hero-subtitle').textContent = `${trip.names} • ${trip.destination}`;
+      document.getElementById('hero-mini').textContent = trip.subtitle;
 
       document.getElementById('flights').innerHTML = flights.map(f => `
-        <div class="rounded-3xl border border-stone-200 bg-white p-5 shadow-sm">
-          <div class="mb-3 text-xs font-bold uppercase tracking-[0.25em] text-amber-700">Qatar Airways</div>
+        <div class="rounded-[28px] border border-stone-200 bg-white p-5 shadow-card">
+          <div class="mb-4 flex items-center justify-between">
+            <div class="text-xs font-black uppercase tracking-[0.25em] text-amber-700">${f.airline}</div>
+            <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-800">Confirmed</span>
+          </div>
           <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-            <div>
+            <div class="rounded-2xl bg-stone-50 p-4">
               <div class="text-sm text-slate-500">من</div>
-              <div class="text-lg font-bold">${f.from}</div>
-              <div class="text-sm text-slate-600">${f.depart}</div>
+              <div class="mt-1 text-lg font-extrabold">${f.from}</div>
+              <div class="mt-1 text-sm text-slate-600">${f.depart}</div>
             </div>
-            <div>
+            <div class="rounded-2xl bg-stone-50 p-4">
               <div class="text-sm text-slate-500">إلى</div>
-              <div class="text-lg font-bold">${f.to}</div>
-              <div class="text-sm text-slate-600">${f.arrive}</div>
+              <div class="mt-1 text-lg font-extrabold">${f.to}</div>
+              <div class="mt-1 text-sm text-slate-600">${f.arrive}</div>
             </div>
           </div>
         </div>
       `).join('');
 
       document.getElementById('stays').innerHTML = stays.map(s => `
-        <div class="rounded-3xl border border-stone-200 bg-white p-5 shadow-sm">
-          <div class="mb-2 text-xs font-bold uppercase tracking-[0.25em] text-amber-700">${s.dates}</div>
-          <h3 class="text-lg font-bold" dir="ltr">${s.name}</h3>
-          <p class="mt-2 text-sm text-slate-600">${s.area} • ${s.nights} ليالٍ</p>
+        <div class="rounded-[28px] border border-stone-200 bg-white p-5 shadow-card">
+          <div class="mb-3 flex items-center justify-between gap-3">
+            <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-black text-amber-900">${s.dates}</span>
+            <span class="rounded-full bg-stone-100 px-3 py-1 text-xs font-bold text-slate-700">${s.nights} ليالٍ</span>
+          </div>
+          <h3 class="text-lg font-extrabold" dir="ltr">${s.name}</h3>
+          <p class="mt-2 text-sm font-medium text-slate-600">${s.area}</p>
+          <p class="mt-3 text-sm leading-7 text-slate-600">${s.note}</p>
           ${actionButtons(s.map, s.site, s.booking)}
         </div>
       `).join('');
 
       document.getElementById('days').innerHTML = days.map((day, index) => `
-        <details class="rounded-3xl border border-stone-200 bg-white p-5 shadow-sm open:border-amber-300">
+        <details class="rounded-[28px] border border-stone-200 bg-white p-5 shadow-card transition open:border-amber-300 open:shadow-soft">
           <summary class="cursor-pointer">
-            <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+            <div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
               <div>
-                <div class="mb-2 inline-block rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-900">Day ${index}</div>
-                <h3 class="text-xl font-bold">${day.title}</h3>
+                <div class="mb-3 flex flex-wrap gap-2">
+                  <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-black text-amber-900">Day ${index}</span>
+                  <span class="rounded-full bg-stone-100 px-3 py-1 text-xs font-bold text-slate-700">${day.energy}</span>
+                </div>
+                <h3 class="text-xl font-extrabold">${day.title}</h3>
                 <p class="mt-1 text-sm text-slate-500">${day.date} • ${day.city}</p>
               </div>
-              <p class="max-w-xl text-sm leading-7 text-slate-600">${day.summary}</p>
+              <p class="max-w-2xl text-sm leading-7 text-slate-600">${day.summary}</p>
             </div>
           </summary>
           <div class="mt-5 border-t border-stone-100 pt-5">
-            <ul class="grid gap-3 md:grid-cols-2">
-              ${day.items.map(item => `<li class="rounded-2xl bg-stone-50 px-4 py-3 text-sm font-medium text-slate-700">${item}</li>`).join('')}
+            <ul class="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+              ${day.items.map(item => `<li class="rounded-2xl bg-stone-50 px-4 py-3 text-sm font-bold text-slate-700">${item}</li>`).join('')}
             </ul>
+            ${linkPills(day.links)}
           </div>
         </details>
       `).join('');
@@ -258,17 +424,17 @@
     document.addEventListener('DOMContentLoaded', render);
   </script>
 
-  <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/90 backdrop-blur">
-    <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 text-white">
+  <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/90 text-white glass">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
       <div>
         <div class="font-en text-xs uppercase tracking-[0.35em] text-amber-300">Our First Journey Together</div>
-        <div class="text-sm font-bold">رحلة شهر العسل</div>
+        <div class="mt-1 text-sm font-extrabold">رحلة شهر العسل</div>
       </div>
       <nav class="hidden gap-3 md:flex">
-        <a href="#overview" class="rounded-full px-4 py-2 hover:bg-white/10">نظرة عامة</a>
-        <a href="#flight-plan" class="rounded-full px-4 py-2 hover:bg-white/10">الطيران</a>
-        <a href="#stay-plan" class="rounded-full px-4 py-2 hover:bg-white/10">السكن</a>
-        <a href="#daily-plan" class="rounded-full px-4 py-2 hover:bg-white/10">البرنامج</a>
+        <a href="#overview" class="rounded-full px-4 py-2 transition hover:bg-white/10">نظرة عامة</a>
+        <a href="#flight-plan" class="rounded-full px-4 py-2 transition hover:bg-white/10">الطيران</a>
+        <a href="#stay-plan" class="rounded-full px-4 py-2 transition hover:bg-white/10">السكن</a>
+        <a href="#daily-plan" class="rounded-full px-4 py-2 transition hover:bg-white/10">البرنامج</a>
       </nav>
     </div>
   </header>
@@ -277,18 +443,34 @@
     <div class="absolute inset-0 opacity-30">
       <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1600&q=80" class="h-full w-full object-cover" alt="South Africa" />
     </div>
-    <div class="absolute inset-0 bg-gradient-to-b from-slate-950/70 to-slate-950"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-950/65 to-slate-950"></div>
     <div class="relative mx-auto max-w-6xl">
       <div class="max-w-3xl">
         <p id="hero-title-en" class="font-en text-sm uppercase tracking-[0.45em] text-amber-300"></p>
         <h1 id="hero-title-ar" class="mt-4 text-4xl font-extrabold md:text-6xl"></h1>
         <p id="hero-subtitle" class="mt-4 text-lg text-white/80"></p>
-        <p class="mt-6 max-w-2xl text-sm leading-8 text-white/85 md:text-base">
-          نسخة مبسطة وجاهزة للعمل على GitHub Pages بدون React أو Next.js. فقط ملف HTML واحد ترفعه مباشرة داخل المستودع.
-        </p>
+        <p id="hero-mini" class="mt-5 max-w-2xl text-sm leading-8 text-white/85 md:text-base"></p>
         <div class="mt-8 flex flex-wrap gap-3">
-          <a href="#daily-plan" class="rounded-2xl bg-amber-400 px-5 py-3 text-sm font-extrabold text-slate-950">افتح البرنامج</a>
-          <a href="#stay-plan" class="rounded-2xl border border-white/20 bg-white/10 px-5 py-3 text-sm font-extrabold text-white">خطة السكن</a>
+          <a href="#daily-plan" class="rounded-2xl bg-amber-400 px-5 py-3 text-sm font-extrabold text-slate-950 transition hover:bg-amber-300">افتح البرنامج</a>
+          <a href="#stay-plan" class="rounded-2xl border border-white/20 bg-white/10 px-5 py-3 text-sm font-extrabold text-white transition hover:bg-white/15">خطة السكن</a>
+        </div>
+      </div>
+      <div class="mt-10 grid gap-4 md:grid-cols-4">
+        <div class="rounded-3xl border border-white/10 bg-white/10 p-4 text-center">
+          <div class="text-xs text-white/70">المدة</div>
+          <div class="mt-2 text-lg font-extrabold">17 Apr → 3 May</div>
+        </div>
+        <div class="rounded-3xl border border-white/10 bg-white/10 p-4 text-center">
+          <div class="text-xs text-white/70">الطابع</div>
+          <div class="mt-2 text-lg font-extrabold">فاخر ورومانسي</div>
+        </div>
+        <div class="rounded-3xl border border-white/10 bg-white/10 p-4 text-center">
+          <div class="text-xs text-white/70">التنقل</div>
+          <div class="mt-2 text-lg font-extrabold">سيارة مستأجرة</div>
+        </div>
+        <div class="rounded-3xl border border-white/10 bg-white/10 p-4 text-center">
+          <div class="text-xs text-white/70">المسار</div>
+          <div class="mt-2 text-lg font-extrabold">Cape Town → Safari → Garden Route</div>
         </div>
       </div>
     </div>
@@ -299,12 +481,13 @@
       <div class="mb-6">
         <p class="font-en text-xs uppercase tracking-[0.35em] text-amber-700">Overview</p>
         <h2 class="mt-2 text-3xl font-extrabold">نظرة عامة</h2>
+        <p class="mt-3 max-w-2xl text-sm leading-7 text-slate-600">هذا الملف مبني خصيصًا ليعمل على GitHub Pages كملف HTML واحد فقط، لكنه محسّن بصريًا ومنظم المحتوى وروابطه الأساسية بشكل احترافي.</p>
       </div>
       <div class="grid gap-4 md:grid-cols-4">
-        <div class="rounded-3xl border border-stone-200 bg-white p-5 shadow-sm"><div class="text-sm text-slate-500">المدة</div><div class="mt-2 text-lg font-bold">17 Apr → 3 May</div></div>
-        <div class="rounded-3xl border border-stone-200 bg-white p-5 shadow-sm"><div class="text-sm text-slate-500">الطابع</div><div class="mt-2 text-lg font-bold">فاخر ورومانسي</div></div>
-        <div class="rounded-3xl border border-stone-200 bg-white p-5 shadow-sm"><div class="text-sm text-slate-500">التنقل</div><div class="mt-2 text-lg font-bold">سيارة مستأجرة</div></div>
-        <div class="rounded-3xl border border-stone-200 bg-white p-5 shadow-sm"><div class="text-sm text-slate-500">المسار</div><div class="mt-2 text-lg font-bold">Cape Town → Safari → Garden Route</div></div>
+        <div class="rounded-[28px] border border-stone-200 bg-white p-5 shadow-card"><div class="text-sm text-slate-500">الافتتاحية</div><div class="mt-2 text-lg font-extrabold">Camps Bay</div><p class="mt-2 text-sm text-slate-600">بداية بحرية هادئة ومميزة.</p></div>
+        <div class="rounded-[28px] border border-stone-200 bg-white p-5 shadow-card"><div class="text-sm text-slate-500">المغامرة</div><div class="mt-2 text-lg font-extrabold">Safari</div><p class="mt-2 text-sm text-slate-600">ليلة سفاري للغروب والشروق.</p></div>
+        <div class="rounded-[28px] border border-stone-200 bg-white p-5 shadow-card"><div class="text-sm text-slate-500">الهدوء</div><div class="mt-2 text-lg font-extrabold">Wilderness</div><p class="mt-2 text-sm text-slate-600">إقامة على البحر مع استرخاء واضح.</p></div>
+        <div class="rounded-[28px] border border-stone-200 bg-white p-5 shadow-card"><div class="text-sm text-slate-500">الختام</div><div class="mt-2 text-lg font-extrabold">Cape Town Finale</div><p class="mt-2 text-sm text-slate-600">تسوق وتمشية وختام أنيق.</p></div>
       </div>
     </section>
 
@@ -329,8 +512,8 @@
         <p class="font-en text-xs uppercase tracking-[0.35em] text-amber-700">Daily Itinerary</p>
         <h2 class="mt-2 text-3xl font-extrabold">البرنامج اليومي</h2>
       </div>
-      <div class="mb-5 rounded-3xl border border-amber-200 bg-amber-50 p-5 text-sm leading-7 text-amber-950">
-        ملاحظة: يوم Hermanus بالقارب جميل، لكن أبريل خارج ذروة موسم الحيتان، لذلك يبقى خيارًا بصريًا أكثر من كونه مضمونًا.
+      <div class="mb-5 rounded-[28px] border border-amber-200 bg-amber-50 p-5 text-sm leading-7 text-amber-950">
+        ملاحظة مهمة: يوم Hermanus بالقارب جميل جدًا، لكن أبريل خارج ذروة موسم الحيتان، لذلك يبقى خيارًا بصريًا واختياريًا أكثر من كونه مضمونًا.
       </div>
       <div id="days" class="space-y-4"></div>
     </section>
@@ -341,7 +524,7 @@
       <p class="font-en text-xs uppercase tracking-[0.35em] text-amber-300">Final Note</p>
       <h2 class="mt-3 text-3xl font-extrabold">رحلتكما الأولى معًا</h2>
       <p class="mt-4 max-w-2xl text-sm leading-8 text-white/80">
-        هذه النسخة مصممة لتكون خفيفة جدًا، سهلة الرفع على GitHub، وسريعة الفتح أثناء السفر.
+        هذه النسخة أصبحت أكثر احترافية بصريًا، وتمت مراجعة المحتوى الأساسي داخل الكود ليكون مرتبًا وواضحًا ومناسبًا للنشر المباشر على GitHub Pages.
       </p>
     </div>
   </footer>
